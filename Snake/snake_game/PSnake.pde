@@ -34,7 +34,7 @@ class SnakeModel {
           if(currentDirection != dRIGHT) {this.headLocation.x -= this.singleFieldSquareSize;adjustBody();}
           break;
         case dRIGHT:;
-          if(currentDirection != dLEFT) {this.headLocation.x += this.singleFieldSquareSize;adjustBody();}
+          if(currentDirection != dLEFT) {this.headLocation.x = (this.headLocation.x + this.singleFieldSquareSize) % width;adjustBody();}
           break;
         case dUP:
           if(currentDirection != dDOWN) {this.headLocation.y -= this.singleFieldSquareSize;adjustBody();}
