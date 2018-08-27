@@ -24,7 +24,7 @@ class SnakeModel {
                            this.headLocation.y));
     }
   }
-  
+ // On Movement 
   void Move(int direction){
     //if(direction != currentDirection) {
       this.currentDirection = direction;
