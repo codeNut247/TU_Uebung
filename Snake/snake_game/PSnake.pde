@@ -24,23 +24,29 @@ class SnakeModel {
                            this.headLocation.y));
     }
   }
- // On Movement 
+  
   void Move(int direction){
     //if(direction != currentDirection) {
       this.currentDirection = direction;
       this.prevLocation = new PVector(this.headLocation.x, this.headLocation.y);
       switch(direction) {
         case dLEFT:
-          if(currentDirection != dRIGHT) {this.headLocation.x -= this.singleFieldSquareSize;adjustBody();}
+          if(currentDirection != dRIGHT)                                               // OR GameOver?
+          {this.headLocation.x -= this.singleFieldSquareSize;if(this.headLocation.x<0){this.headLocation.x = width;};adjustBody();}
           break;
         case dRIGHT:;
-          if(currentDirection != dLEFT) {this.headLocation.x = (this.headLocation.x + this.singleFieldSquareSize) % width;adjustBody();}
+          if(currentDirection != dLEFT) 
+          //{this.headLocation.x = (this.headLocation.x + this.singleFieldSquareSize) % width;adjustBody();}
+          {this.headLocation.x += this.singleFieldSquareSize;if(this.headLocation.x>=width){this.headLocation.x = 0;};adjustBody();}
           break;
         case dUP:
-          if(currentDirection != dDOWN) {this.headLocation.y -= this.singleFieldSquareSize;adjustBody();}
+          if(currentDirection != dDOWN) 
+          {this.headLocation.y -= this.singleFieldSquareSize;if(this.headLocation.y<0){this.headLocation.y = height;};adjustBody();}
           break;
         case dDOWN:
-          if(currentDirection != dUP) {this.headLocation.y += this.singleFieldSquareSize;adjustBody();}
+          if(currentDirection != dUP) 
+          //{this.headLocation.y = (this.headLocation.y + this.singleFieldSquareSize) % height;adjustBody();}
+          {this.headLocation.y += this.singleFieldSquareSize;if(this.headLocation.y>=height){this.headLocation.y = 0;};adjustBody();}
           break;
       }
     //}
@@ -63,11 +69,10 @@ class SnakeModel {
     fill(231, 182, 134);
     for(int i = 1; i <= this.body.size(); i++) {
       PVector link = this.body.get(i - 1);
-      rect(link.x, link.y, singleFieldSquareSize, singleFieldSquareSize);
+      drawBody(link.x, link.y,singleFieldSquareSize, singleFieldSquareSize,i%2==0);
     }
     fill(24, 53, 2);
-    rect(this.headLocation.x, this.headLocation.y, 
-         singleFieldSquareSize, singleFieldSquareSize);
+    drawHead(this.headLocation.x, this.headLocation.y, singleFieldSquareSize, singleFieldSquareSize);
   }
   
 }
