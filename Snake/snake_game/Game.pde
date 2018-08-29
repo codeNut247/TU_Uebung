@@ -1,5 +1,5 @@
 class GameModel {
-  int gameSquares = 40;
+  int gameSquares = 20;
   int currentDirection;
   
   SnakeModel snake;

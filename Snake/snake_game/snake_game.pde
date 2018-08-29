@@ -13,7 +13,7 @@ void draw() {
   
   game.Run();
   
-  delay(100);
+  delay(200);
 }
 
 void keyPressed() {

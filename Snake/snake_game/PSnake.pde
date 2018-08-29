@@ -73,6 +73,10 @@ class SnakeModel {
       drawBody(link.x, link.y,singleFieldSquareSize, singleFieldSquareSize,i%2==0);
     }
     fill(24, 53, 2);
+    rotateHeadAndDraw();
+  }
+  
+  private void rotateHeadAndDraw(){
     pushMatrix();
     translate(this.headLocation.x + singleFieldSquareSize/2, this.headLocation.y + singleFieldSquareSize/2);
     rotate(head_rotation_radians);
