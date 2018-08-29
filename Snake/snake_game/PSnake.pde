@@ -9,6 +9,7 @@ class SnakeModel {
   // head
   PVector prevLocation;
   PVector headLocation;
+  float head_rotation_radians;
   ArrayList<PVector> body;
   
   SnakeModel(PVector screensize, int bodysize, int singleFieldSquareSize) {
@@ -32,21 +33,21 @@ class SnakeModel {
       switch(direction) {
         case dLEFT:
           if(currentDirection != dRIGHT)                                               // OR GameOver?
-          {this.headLocation.x -= this.singleFieldSquareSize;if(this.headLocation.x<0){this.headLocation.x = width;};adjustBody();}
+          {this.headLocation.x -= this.singleFieldSquareSize;if(this.headLocation.x<0){this.headLocation.x = width;};adjustBody();head_rotation_radians=radians(270);}
           break;
         case dRIGHT:;
           if(currentDirection != dLEFT) 
           //{this.headLocation.x = (this.headLocation.x + this.singleFieldSquareSize) % width;adjustBody();}
-          {this.headLocation.x += this.singleFieldSquareSize;if(this.headLocation.x>=width){this.headLocation.x = 0;};adjustBody();}
+          {this.headLocation.x += this.singleFieldSquareSize;if(this.headLocation.x>=width){this.headLocation.x = 0;};adjustBody();head_rotation_radians=2*PI/4;}
           break;
         case dUP:
           if(currentDirection != dDOWN) 
-          {this.headLocation.y -= this.singleFieldSquareSize;if(this.headLocation.y<0){this.headLocation.y = height;};adjustBody();}
+          {this.headLocation.y -= this.singleFieldSquareSize;if(this.headLocation.y<0){this.headLocation.y = height;};adjustBody();head_rotation_radians=2*PI;}
           break;
         case dDOWN:
           if(currentDirection != dUP) 
           //{this.headLocation.y = (this.headLocation.y + this.singleFieldSquareSize) % height;adjustBody();}
-          {this.headLocation.y += this.singleFieldSquareSize;if(this.headLocation.y>=height){this.headLocation.y = 0;};adjustBody();}
+          {this.headLocation.y += this.singleFieldSquareSize;if(this.headLocation.y>=height){this.headLocation.y = 0;};adjustBody();head_rotation_radians=PI;}
           break;
       }
     //}
@@ -72,7 +73,11 @@ class SnakeModel {
       drawBody(link.x, link.y,singleFieldSquareSize, singleFieldSquareSize,i%2==0);
     }
     fill(24, 53, 2);
-    drawHead(this.headLocation.x, this.headLocation.y, singleFieldSquareSize, singleFieldSquareSize);
+    pushMatrix();
+    translate(this.headLocation.x + singleFieldSquareSize/2, this.headLocation.y + singleFieldSquareSize/2);
+    rotate(head_rotation_radians);
+    drawHead(0 - singleFieldSquareSize/2, 0 - singleFieldSquareSize/2, singleFieldSquareSize, singleFieldSquareSize);
+    popMatrix();
   }
   
 }
