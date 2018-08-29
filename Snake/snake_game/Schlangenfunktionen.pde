@@ -3,25 +3,25 @@ final color GREEN_DARK = color(0, 100, 0);
 final color GREEN_BRIGHT = color(0, 150, 0);
 final color HEAD_COLOR = GREEN_DARK;
 
-void setup() {
-  size(300, 800);
-}
+//void setup() {
+//  size(300, 800);
+//}
 
-void draw() {
-  noStroke();
+//void draw() {
+//  noStroke();
   
-  //**************BEISPIELDURCHLAUF**************************
+//  //**************BEISPIELDURCHLAUF**************************
 
-  //***KOPF***
-  drawHead(100, 100, 100, 100);
+//  //***KOPF***
+//  drawHead(100, 100, 100, 100);
 
-  //***KOERPER***
-  for(int i = 0; i<5; i++){
-    drawBody(100,200+(i*100),100,100,i%2==0);
-  }
+//  //***KOERPER***
+//  for(int i = 0; i<5; i++){
+//    drawBody(100,200+(i*100),100,100,i%2==0);
+//  }
   
   //<>//
-}
+//}
 
 //Colorcode zuruckgeben
 color getColor(boolean dark) {
