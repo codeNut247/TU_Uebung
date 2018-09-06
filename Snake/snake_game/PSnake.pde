@@ -4,6 +4,8 @@ public final int dUP = 3;
 public final int dDOWN = 4;
 
 class SnakeModel {
+  boolean isGameOver;
+  
   float singleFieldSquareSize;
   int currentDirection;
   // head
@@ -13,6 +15,7 @@ class SnakeModel {
   ArrayList<PVector> body;
   
   SnakeModel(PVector screensize, int bodysize, int singleFieldSquareSize) {
+    isGameOver = false;
     currentDirection = dRIGHT;
     this.singleFieldSquareSize = singleFieldSquareSize;
     this.headLocation = new PVector(random(screensize.x/4, 3*(screensize.x/4)), 
@@ -82,6 +85,16 @@ class SnakeModel {
     rotate(head_rotation_radians);
     drawHead(0 - singleFieldSquareSize/2, 0 - singleFieldSquareSize/2, singleFieldSquareSize, singleFieldSquareSize);
     popMatrix();
+  }
+  
+  public boolean IsColliding(){
+    for (int i = 1; i <= this.body.size(); i++) {
+      //if (snake.body.get(i).dist(snake.headLocation) == 0){
+      if(this.body.get(i-1).dist(this.headLocation) == 0){
+        return true;
+      }
+    }
+    return false;
   }
   
 }

@@ -1,7 +1,6 @@
 SnakeModel snake;
 GameModel game;
 
-
 void setup() {
  size(800, 800);
  game = new GameModel(new PVector(width, height));
