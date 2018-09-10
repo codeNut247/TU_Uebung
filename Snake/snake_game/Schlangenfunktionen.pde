@@ -81,7 +81,7 @@ void drawBody(final float POS_X, final float POS_Y, final float DELTA_X, final f
   final float POS_Y_END = POS_Y + DELTA_Y; //Y-Koordinate, wo der Body endet
 
   //Grundstein
-  fill(getColor(DARK)); //<>//
+  fill(getColor(DARK));
   quad(POS_X, POS_Y, POS_X, POS_Y_END, POS_X_END, POS_Y_END, POS_X_END, POS_Y);
 
   //Einzelnen Schattierungen (=Muster)

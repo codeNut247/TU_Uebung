@@ -3,8 +3,7 @@ GameModel game;
 
 void setup() {
  size(800, 800);
- game = new GameModel(new PVector(width, height));
- game.currentDirection = dRIGHT;
+ game = new GameModel();
 }
 
 void draw() {
@@ -12,7 +11,15 @@ void draw() {
   
   game.Run();
   
-  delay(200);
+  delay(100);
+}
+
+void mousePressed(){
+  if (mouseButton == LEFT) {
+    if(game.isGameOver){
+      game.btn_ReInit_Click(mouseX, mouseY);
+    }
+  }
 }
 
 void keyPressed() {
